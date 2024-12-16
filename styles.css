@@ -1,13 +1,14 @@
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start; /* Changed from center to allow scrolling */
+  min-height: 100vh;
   background-color: #222;
   color: #fff;
   font-family: Arial, sans-serif;
   margin: 0;
-  overflow: hidden;
+  padding: 20px 0; /* Add vertical padding */
+  overflow-y: auto; /* Enable body scrolling */
 }
 
 .container {
@@ -15,14 +16,16 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 500px;
+  max-width: 2000px;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .clock {
   position: relative;
-  width: 300px;
-  height: 300px;
-  border: 5px solid #fff;
+  width: 280px;
+  height: 280px;
+  border: 4px solid #fff;
   border-radius: 50%;
   transform: scale(1);
   transition: transform 0.3s ease;
@@ -37,57 +40,64 @@ body {
 }
 
 .hour {
-  width: 8px;
-  height: 80px;
-  border-radius: 4px;
+  width: 6px;
+  height: 70px;
+  border-radius: 3px;
 }
 
 .minute {
-  width: 4px;
-  height: 120px;
+  width: 3px;
+  height: 110px;
   border-radius: 2px;
 }
 
 .message {
-  margin-top: 20px;
-  font-size: 20px;
+  margin-top: 15px;
+  font-size: 18px;
   text-align: center;
   height: 30px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 15px;
   width: 100%;
 }
 
 .speed-control {
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
   width: 100%;
-  justify-content: center;
 }
 
 .speed-control label {
-  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .action-buttons {
   display: flex;
   gap: 10px;
+  justify-content: center;
+  width: 100%;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 10px 15px;
   background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 14px;
 }
 
 button:hover {
@@ -95,13 +105,14 @@ button:hover {
 }
 
 #speed-slider {
-  width: 200px;
+  width: 250px;
+  appearance: slider-horizontal;
 }
 
 .angle-log {
-  margin-top: 20px;
-  max-height: 300px; /* Increased height */
-  overflow-y: auto;
+  margin-top: 15px;
+  max-height: 100%; /* Limit log height */
+  overflow-y: auto; /* Allow scrolling within log */
   text-align: center;
   width: 100%;
   display: flex;
@@ -109,22 +120,77 @@ button:hover {
 }
 
 .angle-log div {
-  margin: 5px 0;
+  margin: 3px 0;
   color: #ddd;
-  padding: 5px;
+  padding: 4px;
   background-color: rgba(255,255,255,0.1);
   border-radius: 3px;
   transition: background-color 0.3s ease;
-}
-
-.angle-log div:hover {
-  background-color: rgba(255,255,255,0.2);
+  font-size: 14px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .angle-count {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   color: white;
   font-weight: bold;
+}
+
+/* Media query for very small screens */
+@media screen and (max-width: 320px) {
+  .clock {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hour {
+    width: 5px;
+    height: 60px;
+  }
+
+  .minute {
+    width: 2px;
+    height: 100px;
+  }
+
+  .message, .angle-log div, .angle-count {
+    font-size: 14px;
+  }
+
+  #speed-slider {
+    width: 200px;
+  }
+}
+
+/* Ensure touch interactions are smooth */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Scrollbar styling for modern browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.5);
 }

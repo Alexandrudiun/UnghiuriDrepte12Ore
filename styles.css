@@ -1,0 +1,130 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #222;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.clock {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.hour, .minute {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  background-color: #fff;
+}
+
+.hour {
+  width: 8px;
+  height: 80px;
+  border-radius: 4px;
+}
+
+.minute {
+  width: 4px;
+  height: 120px;
+  border-radius: 2px;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  height: 30px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.speed-control label {
+  margin-right: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#speed-slider {
+  width: 200px;
+}
+
+.angle-log {
+  margin-top: 20px;
+  max-height: 300px; /* Increased height */
+  overflow-y: auto;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.angle-log div {
+  margin: 5px 0;
+  color: #ddd;
+  padding: 5px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.angle-log div:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.angle-count {
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}

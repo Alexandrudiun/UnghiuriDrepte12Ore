@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ceas si unghiuri drepte</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="clock">
+      <div class="hour" id="hour-hand"></div>
+      <div class="minute" id="minute-hand"></div>
+    </div>
+    
+    <div class="message" id="message"></div>
+    
+    <div class="angle-count" id="angle-count">Unghiuri drepte pentru 12 ore: 0/22</div>
+    
+    <div class="controls">
+      <div class="speed-control">
+        <label for="speed-slider">Viteza: <span id="speed-value">0.5x</span></label>
+        <input type="range" id="speed-slider" min="1" max="9" value="5">
+      </div>
+      <div class="action-buttons">
+        <button id="start-button">Start</button>
+        <button id="stop-button">Reset</button>
+      </div>
+    </div>
+    
+    <div id="angle-log" class="angle-log"></div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
